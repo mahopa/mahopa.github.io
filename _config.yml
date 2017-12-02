@@ -33,8 +33,8 @@ plugins:
   # Site Author
 author:
   name             : *name # *name is a YAML reference pointing to the &anchor earlier
-  avatar           : "/assets/images/michael-rose.jpg"
-  bio              : "Developer & Architect"
+  avatar           : #"/assets/images/michael-rose.jpg"
+  bio              : "I'm a developer and architect who likes to build things with others. I enjoy learning, teaching and tea."
   location         : "Houston, TX"
   email            :
   uri              : 
@@ -44,7 +44,7 @@ author:
   flickr           :
   facebook         : 
   foursquare       :
-  github           : 
+  github           : mahopa
   gitlab           :
   google_plus      :
   keybase          :
@@ -61,6 +61,19 @@ author:
   weibo            :
   xing             :
   youtube          :
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      #share: true
+      related: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
