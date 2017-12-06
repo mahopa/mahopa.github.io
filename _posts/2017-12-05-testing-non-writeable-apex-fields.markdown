@@ -10,7 +10,8 @@ Salesforce makes it difficult to test objects with non-writeable fields. Object 
 
 Take the example code below.
 
-{% highlight java %}
+<pre>
+<code class="language-java">
 public class ContactHistoryMagic {
 
   public List<Change> convertContactHistoriesToChanges(List<String> contactIds) {
@@ -33,12 +34,15 @@ public class ContactHistoryMagic {
     return changes;
   }
 }
-{% endhighlight %}
+</code>
+</pre>
 
 Lets take a couple looks at options to test this code.
 
 ### Update a contact and then retrieve the history
-{% highlight java %}
+
+<pre>
+<code class="language-java">
 
 ContactHistoryMagicTest{
   private static void testConvertContactHistoriesToChanges(){
@@ -46,22 +50,23 @@ ContactHistoryMagicTest{
     contactHistory.
   }
 }
-
-{% endhighlight %}
+</code>
+</pre>
 
 Unfortunately this doesn't work. The contactHistory entries aren't created until after the test completes. It's hard to test what isn't there. :-(
 
 ### Create the object, insert, test
-{% highlight java %}
 
+<pre>
+<code class="language-java">
 ContactHistoryMagicTest{
   private static void testConvertContactHistoriesToChanges(){
     ContactHistory contactHistory = new ContactHistory();
     contactHistory.
   }
 }
-
-{% endhighlight %}
+</code>
+</pre>
 
 This is no good either. The objects fields aren't writable, so we can't create it, let alone insert it.
 
@@ -75,8 +80,8 @@ Sometimes the best mock of an object is the object itself.
 
 I know, I know. The fields aren't writeable, it won't let us build up the object. ContactHistory fields aren't writable, but sObject fields are ;-).
 
-{% highlight java %}
-
+<pre>
+<code class="language-java">
 ContactHistoryMagicTest{
   private static void testConvertContactHistoriesToChanges(){
     
@@ -92,11 +97,13 @@ ContactHistoryMagicTest{
 
   }
 }
-
-{% endhighlight %}
+</code>
+</pre>
 
 Surprisingly this works. There is a caveat. Inserting the records will cause a runtime error. That means we'll need to separate the SOQL that retrieves these records from the logic that manipulates them.
 
+<pre>
+<code class="language-java">
 public class ContactHistoryMagic {
 
   public List<Change> convertContactHistoriesToChanges(List<String> contactIds) {
@@ -125,7 +132,8 @@ public class ContactHistoryMagic {
       return changes;
   }
 }
-{% endhighlight %}
+</code>
+</pre>
 
 By pulling the logic into a separate method, we can test the logic on it's own. Better separation of concerns, and more importantly we can use tests to make sure our code is behaving as expected.
 
