@@ -1,7 +1,7 @@
 ---
-title:  "Welcome to Jekyll!"
-date:   2017-12-01 18:10:21 -0600
-categories: jekyll update
+title:  "Testing non-writeable fields and objects in Apex"
+date:   2017-12-05 20:53:21 -0600
+categories: Salesforce Apex testing
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
@@ -9,7 +9,7 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 
 Jekyll also offers powerful support for code snippets:
 
-{% highlight ruby %}
+{% highlight apex %}
 def print_hi(name)
   puts "Hi, #{name}"
 end
