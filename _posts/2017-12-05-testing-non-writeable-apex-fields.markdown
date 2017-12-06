@@ -54,7 +54,7 @@ Unfortunately this doesn't work. The contactHistory entries aren't created until
 ### Create the object, insert, test
 {% highlight java %}
 
-ContactHistoryMagicTest{
+public class ContactHistoryMagicTest{
   private static void testConvertContactHistoriesToChanges(){
     ContactHistory contactHistory = new ContactHistory();
     contactHistory.
@@ -77,7 +77,7 @@ I know, I know. The fields aren't writeable, it won't let us build up the object
 
 {% highlight java %}
 
-ContactHistoryMagicTest{
+public class ContactHistoryMagicTest{
   private static void testConvertContactHistoriesToChanges(){
     
     //Polymorphism is awesome
