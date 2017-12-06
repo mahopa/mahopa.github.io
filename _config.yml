@@ -23,6 +23,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
+highlighter: rougue
 remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: dark 
 # theme: minima
