@@ -8,7 +8,19 @@ Salesforce makes it difficult to test objects with non-writeable fields. Object 
 Take the example code below.
 
 {% highlight java %}
-List<ContactHistory> contactHistories = [SELECT Id, Field, NewValue, OldValue];
+public class ContactHistoryMagic {
+
+  public List<Change> convertContactHistoriesToChanges(List<String> contactIds) {
+    List<ContactHistory> contactHistories = [
+      SELECT Id, 
+        Field, 
+        NewValue, 
+        OldValue
+      FROM ContactHistory
+      IN :contactIds
+    ];
+  }
+}
 
 {% endhighlight %}
 
