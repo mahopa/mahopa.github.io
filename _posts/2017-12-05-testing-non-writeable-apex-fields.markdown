@@ -11,6 +11,7 @@ Take the example code below.
 public class ContactHistoryMagic {
 
   public List<Change> convertContactHistoriesToChanges(List<String> contactIds) {
+    
     List<ContactHistory> contactHistories = [
       SELECT Id, 
         Field, 
@@ -19,6 +20,14 @@ public class ContactHistoryMagic {
       FROM ContactHistory
       IN :contactIds
     ];
+
+    List<Change> changes = new List<Change>();
+
+    for(ContactHistory c: contactHistories){
+      //Do stuff
+    }
+
+    return changes;
   }
 }
 
